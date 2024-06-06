@@ -26,14 +26,14 @@ public class Player extends Entity{
     }
     public void  getPlayerImage() {
         try {
-            up1 = ImageIO.read(getClass().getResourceAsStream("/player/sprite"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/player/sprite"));
-            down1 = ImageIO.read(getClass().getResourceAsStream("/player/sprite"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/player/sprite"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("/player/sprite"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/player/sprite"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("/player/sprite"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/player/sprite"));
+            up1 = ImageIO.read(getClass().getResourceAsStream("resources/player/sprite"));
+            up2 = ImageIO.read(getClass().getResourceAsStream("resources/player/sprite"));
+            down1 = ImageIO.read(getClass().getResourceAsStream("resources/player/sprite"));
+            down2 = ImageIO.read(getClass().getResourceAsStream("resources/player/sprite"));
+            left1 = ImageIO.read(getClass().getResourceAsStream("resources/player/sprite"));
+            left2 = ImageIO.read(getClass().getResourceAsStream("resources/player/sprite"));
+            right1 = ImageIO.read(getClass().getResourceAsStream("resources/player/sprite"));
+            right2 = ImageIO.read(getClass().getResourceAsStream("resources/player/sprite"));
 
         }catch (IOException e) {
             e.printStackTrace();
@@ -70,8 +70,9 @@ public class Player extends Entity{
                 image = left1;
                 break;
             case"right":
-                image = left2;
+                image = right1;
                 break;
         }
+        g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
     }
 }
