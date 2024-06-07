@@ -1,6 +1,7 @@
 package org.example.main;
 
 import org.example.entity.Player;
+import org.example.tile.TileManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,12 +11,13 @@ public class GamePanel extends JPanel implements Runnable {
     final int originalTileSize = 16; // 16x16 rozmiar gracza npc oraz kafelków na mapie;
     final int scale = 3; // skalowanie dla monitorów
     public int tileSize = originalTileSize * scale;
-    final int maxScreenCol = 16; // liczba w kafelków kolumnie kafelków na ekranie
-    final  int maxScreenRow = 12;
-    final int screenWidth = tileSize * maxScreenCol; // 768 px
-    final int screenHeight = tileSize * maxScreenRow; // 576 px
+    public final int maxScreenCol = 16; // liczba w kafelków kolumnie kafelków na ekranie
+    public final  int maxScreenRow = 12;
+    public final int screenWidth = tileSize * maxScreenCol; // 768 px
+    public final int screenHeight = tileSize * maxScreenRow; // 576 px
 
     final  int FPS = 60;
+    TileManager tileM = new TileManager(this);
 
     Thread gameThread;
     KeyHandler keyH = new KeyHandler();
@@ -72,6 +74,7 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g);
 
         Graphics2D g2 = (Graphics2D)g;
+        tileM.draw(g2);
         player.draw(g2);
         g2.dispose();
     }
