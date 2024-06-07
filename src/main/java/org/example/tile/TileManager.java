@@ -9,10 +9,14 @@ import java.io.IOException;
 public class TileManager {
     GamePanel gp;
     Tile[] tile;
+    int[][] map;
     public TileManager(GamePanel gp) {
         this.gp = gp;
         tile = new Tile[10];
         getTileImage();
+    }
+    public void setMap(int[][] generatedMap) {
+        this.map = generatedMap;
     }
     public void getTileImage() {
         try {
@@ -25,21 +29,14 @@ public class TileManager {
         }
     }
     public void draw(Graphics2D g2) {
-        int col = 0;
-        int row = 0;
-        int x = 0;
-        int y = 0;
-        while (col < gp.maxScreenCol && row < gp.maxScreenRow) {
-            g2.drawImage(tile[0].image, x, y, gp.tileSize, gp.tileSize, null);
-            col++;
-            x += gp.tileSize;
-
-            if (col == gp.maxScreenCol) {
-                col = 0;
-                x = 0;
-                row++;
-                y += gp.tileSize;
+        for (int row = 0; row < gp.maxScreenRow; row++) {
+            for (int col = 0; col < gp.maxScreenCol; col++) {
+                int tileNum = map[row][col];
+                int x = col * gp.tileSize;
+                int y = row * gp.tileSize;
+                g2.drawImage(tile[tileNum].image, x, y, gp.tileSize, gp.tileSize, null);
             }
         }
     }
+
 }

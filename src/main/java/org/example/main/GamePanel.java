@@ -1,6 +1,7 @@
 package org.example.main;
 
 import org.example.entity.Player;
+import org.example.tile.MapGenerator;
 import org.example.tile.TileManager;
 
 import javax.swing.*;
@@ -17,7 +18,12 @@ public class GamePanel extends JPanel implements Runnable {
     public final int screenHeight = tileSize * maxScreenRow; // 576 px
 
     final  int FPS = 60;
+    // W klasie GamePanel
+    MapGenerator mapGenerator = new MapGenerator(maxScreenCol, maxScreenRow);
+    int[][] generatedMap = mapGenerator.generateMap();
+
     TileManager tileM = new TileManager(this);
+
 
     Thread gameThread;
     KeyHandler keyH = new KeyHandler();
