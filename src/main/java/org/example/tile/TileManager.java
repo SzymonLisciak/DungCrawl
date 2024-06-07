@@ -36,6 +36,7 @@ public class TileManager {
 
             if (col == gp.maxScreenCol) {
                 col = 0;
+                x = 0;
                 row++;
                 y += gp.tileSize;
             }
